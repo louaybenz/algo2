@@ -1,0 +1,33 @@
+ALGORITHM ex1V2
+VAR
+    i,j:integer
+    object :	STRUCT
+                        tab : ARRAY_OF INTEGER[60];
+                        found : BOOLEAN
+                        sum:INTEGER
+                    END_STRUCT
+    tab1, tab2  : ARRAY_OF integer[30];
+    
+
+BEGIN
+    FOR i FROM 0 TO 10   DO
+        read(tab1[i])
+        read(tab2[i])
+    END_FOR
+    object.tab=concat(tab1,tab2)
+    object.sum=0
+    object.found=true
+    FOR i FROM 0 TO object.tab.length-1  DO
+        FOR j FROM i+1 TO object.tab.length STEP step  DO
+            IF (object.tab[i]=object.tab[j]) THEN
+                object.found=false
+            END_IF
+        END_FOR
+        IF (object.found=true) THEN
+            object.sum=object.sum+2*object.tab[i]
+        END_IF
+        object.found=true
+    END_FOR
+    write (object.sum)
+
+END
